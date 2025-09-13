@@ -4,7 +4,7 @@
 \alias{apc_dmat}
 \title{Design Matrix of Age-Period-Cohort Model}
 \usage{
-apc_dmat(A, P, C, mode = 1)
+apc_dmat(A, P, C, degree = 1)
 }
 \arguments{
 \item{A}{Age}
@@ -13,13 +13,13 @@ apc_dmat(A, P, C, mode = 1)
 
 \item{C}{Cohort}
 
-\item{mode}{1 for linear APC model; 2 for quadratic APC model}
+\item{degree}{1 for linear APC model; 2 for quadratic APC model}
 }
 \value{
 A matrix object
 }
 \description{
-Generate the design matrix of APC model used in \href{https://analysistools.cancer.gov/apc/}{APC Analysis Web Tool}.
+Generate the APC design matrix using the \code{designmatrix()} function from \href{https://analysistools.cancer.gov/apc/}{APC Analysis Web Tool}.
     The source code can be found in its \href{https://github.com/CBIIT/nci-webtools-dceg-age-period-cohort}{Github repository}.
     The quadratic design matrix is implemented by Chernyavskiy et al. (2019).
 }

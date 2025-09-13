@@ -1,13 +1,13 @@
 #' Design Matrix of Age-Period-Cohort Model
 #'
-#' Generate the design matrix of APC model used in \href{https://analysistools.cancer.gov/apc/}{APC Analysis Web Tool}.
+#' Generate the APC design matrix using the \code{designmatrix()} function from \href{https://analysistools.cancer.gov/apc/}{APC Analysis Web Tool}.
 #'     The source code can be found in its \href{https://github.com/CBIIT/nci-webtools-dceg-age-period-cohort}{Github repository}.
 #'     The quadratic design matrix is implemented by Chernyavskiy et al. (2019).
 #'
 #' @param A Age
 #' @param P Period
 #' @param C Cohort
-#' @param mode 1 for linear APC model; 2 for quadratic APC model
+#' @param degree 1 for linear APC model; 2 for quadratic APC model
 #'
 #' @return A matrix object
 #'
@@ -20,7 +20,7 @@
 #'
 #' @export
 #'
-apc_dmat <- function(A, P, C, mode = 1) {
+apc_dmat <- function(A, P, C, degree = 1) {
   XMAT <- cbind(A, P, C)
   PVP <- list(D = list(DATA = XMAT,
                        a = unique(XMAT[, 1]),
@@ -28,10 +28,10 @@ apc_dmat <- function(A, P, C, mode = 1) {
                        c = unique(XMAT[, 3])),
               RVals = apply(XMAT, 2, mean))
 
-  if(mode == 1) {
+  if(degree == 1) {
     # A-2 age devs, P-2 period devs, C-2 cohort devs
     mat.list <- apc_dmat_linear(PVP)
-  } else if(mode == 2) {
+  } else if(degree == 2) {
     # A-3 age devs, P-3 period devs, C-3 cohort devs
     mat.list <- apc_dmat_poly(PVP)
   }
