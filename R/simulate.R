@@ -18,7 +18,6 @@ static_risk <- function(s, c1, c2, bw, rr) {
 
 #' Exponential Age Effect
 #'
-#' @param age index of age groups
 #' @param age_n number of age groups
 #' @param min_rate rate in the first age group
 #' @param rr ratio of the rate in the last age group to that in the first age group
@@ -26,8 +25,10 @@ static_risk <- function(s, c1, c2, bw, rr) {
 #' @export
 #' @name age_ef
 #'
-exp_age_ef <- function(age, age_n = 9, min_rate = 25e-5, rr = 10) {
-  log(min_rate) + log(rr) / (age_n - 1) * (age - 1)
+exp_age_ef <- function(age_n, min_rate = 25e-5, rr = 10) {
+  function(age) {
+    log(min_rate) + log(rr) / (age_n - 1) * (age - 1)
+  }
 }
 
 #' Spatiotemporal Simulation
@@ -46,7 +47,7 @@ exp_age_ef <- function(age, age_n = 9, min_rate = 25e-5, rr = 10) {
 #' @param t_n number of time groups
 #' @param t_turn turning time point
 #' @param t_bw bandwidth in time
-#' @param age_fun age effect function
+#' @param age_fun a function of age that outputs age-specific baseline rates
 #' @param scenario simulation scenario
 #' \itemize{
 #'   \item 1: convergence–dissipation
@@ -65,7 +66,9 @@ st_sim <- function(s, t, age,
                    s_bw_static, s_bw_dynamic,
                    rr_static, rr_dynamic,
                    t_n, t_turn, t_bw,
-                   age_fun = exp_age_ef, scenario) {
+                   age_fun, scenario) {
+
+  if(inherits(s, c("sf", "sfc"))) s <- as(s, "Spatial")
 
   int <- static_risk(s, c1, c2, s_bw_static, rr_static)
   d <- sp::spDists(s, path(c_start, c_end, t, t_n))

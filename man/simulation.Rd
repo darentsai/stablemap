@@ -23,7 +23,7 @@ st_sim(
   t_n,
   t_turn,
   t_bw,
-  age_fun = exp_age_ef,
+  age_fun,
   scenario
 )
 
@@ -62,7 +62,7 @@ st_sim3(...)
 
 \item{t_bw}{bandwidth in time}
 
-\item{age_fun}{age effect function}
+\item{age_fun}{a function of age that outputs age-specific baseline rates}
 
 \item{scenario}{simulation scenario
 \itemize{

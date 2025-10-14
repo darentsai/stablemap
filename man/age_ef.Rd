@@ -5,11 +5,9 @@
 \alias{exp_age_ef}
 \title{Exponential Age Effect}
 \usage{
-exp_age_ef(age, age_n = 9, min_rate = 0.00025, rr = 10)
+exp_age_ef(age_n, min_rate = 0.00025, rr = 10)
 }
 \arguments{
-\item{age}{index of age groups}
-
 \item{age_n}{number of age groups}
 
 \item{min_rate}{rate in the first age group}
