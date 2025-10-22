@@ -1,0 +1,21 @@
+Package: stablemap
+Type: Package
+Title: Stabilized Disease Mapping
+Version: 0.1.0
+Authors@R: person("Darren", "Tsai", email = "darrentsai1222@gmail.com", role = c("aut", "cre"),
+                          comment = c(ORCID = "0000-0003-1372-4473"))
+Description: Stabilized disease mapping approaches,
+    including stabilized Kriging (Hsu et al., 2023)<doi: 10.2188/jea.JE20210276>,
+    stabilized spatiotemporal Kriging (Tsai et al., 2022)<doi: 10.1186/s12874-022-01749-9>,
+    age-period-cohort Kriging.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.3
+Imports: 
+    stats,
+    methods,
+    gstat,
+    sp
+Depends: 
+    R (>= 4.0)
