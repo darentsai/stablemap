@@ -7,11 +7,11 @@
 apc_dmat(A, P, C, degree = 1)
 }
 \arguments{
-\item{A}{Age}
+\item{A}{Age index}
 
-\item{P}{Period}
+\item{P}{Period index}
 
-\item{C}{Cohort}
+\item{C}{Cohort index}
 
 \item{degree}{1 for linear APC model; 2 for quadratic APC model}
 }
@@ -19,5 +19,5 @@ apc_dmat(A, P, C, degree = 1)
 A matrix object
 }
 \description{
-Construct the APC design matrix with an age-drift parameterization.
+Construct a linear or quadratic APC design matrix with an age-drift parameterization.
 }
