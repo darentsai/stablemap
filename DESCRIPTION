@@ -1,0 +1,32 @@
+Package: stablemap
+Type: Package
+Title: Stabilized Disease Mapping
+Version: 0.1.0
+Authors@R: person("Dai-Rong", "Tsai", role = c("aut", "cre"),
+                  email = "darrentsai1222@gmail.com",
+                  comment = c(ORCID = "0000-0003-1372-4473"))
+Description: This package provides statistical methods for stabilized disease mapping
+    and tools for generating space-time simulation data.
+    The supported methods include:
+    stabilized kriging (Hsu et al., 2023) <<doi:10.2188/jea.JE20210276>>,
+    stabilized spatiotemporal kriging (Tsai et al., 2022) <<doi:10.1186/s12874-022-01749-9>>,
+    age-period-cohort kriging, etc.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.3
+Roxygen: list(markdown = TRUE)
+Imports: 
+    stats,
+    gstat,
+    sp,
+    sf,
+    spacetime,
+    geosphere,
+    dplyr,
+    ggplot2
+LinkingTo: Rcpp, RcppEigen
+Depends: R (>= 4.1.0)
+Suggests: 
+    spelling
+Language: en-US
